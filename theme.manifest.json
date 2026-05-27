@@ -1,0 +1,297 @@
+{
+  "id": "default",
+  "name": "Default Theme",
+  "version": "1.0.177",
+  "author": "Shoppex",
+  "description": "Clean, minimal storefront theme with dark mode design. Built for performance and customization.",
+  "preview": "preview.png",
+  "hotfixPaths": [
+    "src/hooks/**",
+    "src/lib/**",
+    "src/types/**",
+    "src/context/**"
+  ],
+  "features": [
+    "Dark mode design",
+    "Product pages with variant selection",
+    "Shopping cart with quantity controls",
+    "Responsive mobile-first layout",
+    "Category navigation",
+    "Search functionality",
+    "Customer authentication"
+  ],
+  "techStack": [
+    "React 19",
+    "TypeScript",
+    "Tailwind CSS"
+  ],
+  "templates": [
+    "Home Page",
+    "Product Listing",
+    "Product Detail",
+    "Cart",
+    "Checkout",
+    "Customer Portal"
+  ],
+  "builder": {
+    "pages": [
+      {
+        "id": "home",
+        "label": "Home",
+        "previewPath": "/",
+        "blocks": ["hero", "products", "why-choose-us", "text-block", "image-gallery", "stock-countdown", "license-delivery", "discord-role-claim", "vouches", "blog-posts", "faq", "about"]
+      },
+      {
+        "id": "navigation",
+        "label": "Navigation",
+        "previewPath": "/",
+        "blocks": ["header"]
+      },
+      {
+        "id": "product",
+        "label": "Product",
+        "blocks": ["gallery", "buy-box", "details", "related-products"]
+      },
+      {
+        "id": "footer",
+        "label": "Footer",
+        "previewPath": "/",
+        "blocks": ["footer"]
+      },
+      {
+        "id": "terms",
+        "label": "Terms",
+        "previewPath": "/terms",
+        "blocks": []
+      }
+    ],
+    "blocks": {
+      "hero": {
+        "id": "hero",
+        "label": "Hero",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "hero.title", "label": "Title", "placeholder": "Main headline", "defaultFrom": ["shop.title", "shop.name"] },
+          { "path": "hero.subtitle", "type": "richtext", "label": "Subtitle", "placeholder": "Short value proposition", "defaultFrom": ["shop.message", "shop.description"] }
+        ]
+      },
+      "products": {
+        "id": "products",
+        "label": "Products",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "products.title", "label": "Title", "placeholder": "Optional section title" },
+          { "path": "products.subtitle", "type": "richtext", "label": "Subtitle", "placeholder": "Optional section subtitle" },
+          { "path": "products.emptyState", "label": "Empty State", "defaultValue": "No products found." }
+        ]
+      },
+      "why-choose-us": {
+        "id": "why-choose-us",
+        "label": "Why Choose Us",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "whyChooseUs.title", "label": "Title", "defaultValue": "Why Choose Us?" },
+          { "path": "whyChooseUs.subtitle", "type": "richtext", "label": "Subtitle", "defaultValue": "Experience the best service in the market" }
+        ],
+        "lists": [
+          { "path": "whyChooseUs.features", "label": "Feature Cards", "kind": "featureCards", "description": "Edit the feature cards shown in this section." }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "label": "FAQ",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "faq.title", "label": "Title", "defaultValue": "Frequently Asked Questions" }
+        ],
+        "lists": [
+          { "path": "faq.items", "label": "FAQ Items", "kind": "faqItems", "description": "Override the FAQ list for the home page." }
+        ]
+      },
+      "about": {
+        "id": "about",
+        "label": "About",
+        "maxInstances": 1
+      },
+      "text-block": {
+        "id": "text-block",
+        "label": "Text Block",
+        "maxInstances": 4,
+        "fields": [
+          { "path": "textBlock.eyebrow", "label": "Eyebrow", "placeholder": "Optional small label above the title" },
+          { "path": "textBlock.title", "label": "Title", "placeholder": "Headline for this text block" },
+          { "path": "textBlock.body", "type": "richtext", "label": "Body", "placeholder": "Write a paragraph here. Line breaks are preserved." },
+          { "path": "textBlock.alignment", "type": "select", "label": "Alignment", "defaultValue": "left", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}] },
+          { "path": "textBlock.ctaLabel", "label": "CTA Label", "placeholder": "e.g. Learn more" },
+          { "path": "textBlock.ctaHref", "label": "CTA URL", "placeholder": "/about or https://…" }
+        ]
+      },
+      "image-gallery": {
+        "id": "image-gallery",
+        "label": "Image Gallery",
+        "maxInstances": 3,
+        "fields": [
+          { "path": "imageGallery.title", "label": "Title", "placeholder": "Optional gallery title" },
+          { "path": "imageGallery.subtitle", "type": "richtext", "label": "Subtitle", "placeholder": "Optional description" },
+          { "path": "imageGallery.columns", "type": "select", "label": "Columns", "defaultValue": "3", "options": [{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"}] }
+        ],
+        "lists": [
+          { "path": "imageGallery.items", "label": "Images", "kind": "galleryItems", "description": "Images shown in the gallery grid." }
+        ]
+      },
+      "blog-posts": {
+        "id": "blog-posts",
+        "label": "Blog Posts",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "blogPosts.title", "label": "Title", "defaultValue": "From the blog" },
+          { "path": "blogPosts.subtitle", "type": "richtext", "label": "Subtitle", "placeholder": "Optional description" },
+          { "path": "blogPosts.ctaLabel", "label": "See-all Label", "placeholder": "e.g. View all posts" },
+          { "path": "blogPosts.ctaHref", "label": "See-all URL", "placeholder": "/blog" }
+        ],
+        "lists": [
+          { "path": "blogPosts.items", "label": "Posts", "kind": "blogPosts", "description": "Up to 6 posts. First post with a thumbnail is featured." }
+        ]
+      },
+      "license-delivery": {
+        "id": "license-delivery",
+        "label": "License Delivery Timeline",
+        "maxInstances": 2,
+        "fields": [
+          { "path": "licenseDelivery.title", "label": "Title", "defaultValue": "How delivery works" },
+          { "path": "licenseDelivery.subtitle", "type": "richtext", "label": "Subtitle", "defaultValue": "Automated end-to-end — no manual steps between payment and your inbox." }
+        ],
+        "lists": [
+          { "path": "licenseDelivery.steps", "label": "Steps", "kind": "timelineSteps", "description": "Three steps shown in the delivery timeline." }
+        ]
+      },
+      "discord-role-claim": {
+        "id": "discord-role-claim",
+        "label": "Discord Role Claim",
+        "maxInstances": 2,
+        "fields": [
+          { "path": "discordRole.title", "label": "Title", "defaultValue": "Claim your Discord role" },
+          { "path": "discordRole.subtitle", "type": "richtext", "label": "Subtitle", "defaultValue": "Connect your Discord account and get instant access to buyer-only channels." },
+          { "path": "discordRole.ctaLabel", "label": "Button Label", "defaultValue": "Connect Discord" },
+          { "path": "discordRole.serverName", "label": "Server Name", "placeholder": "e.g. our Discord server" },
+          { "path": "discordRole.roleName", "label": "Role Name", "placeholder": "e.g. Verified Buyer" }
+        ]
+      },
+      "stock-countdown": {
+        "id": "stock-countdown",
+        "label": "Stock / Drop Countdown",
+        "maxInstances": 3,
+        "fields": [
+          { "path": "stockCountdown.title", "label": "Title", "defaultValue": "Limited drop" },
+          { "path": "stockCountdown.stockLabel", "label": "Stock Label", "defaultValue": "Keys remaining" },
+          { "path": "stockCountdown.dropAt", "label": "Drop Datetime (ISO)", "placeholder": "2026-05-01T18:00:00Z" },
+          { "path": "stockCountdown.dropLabel", "label": "Countdown Label", "defaultValue": "Next drop in" }
+        ]
+      },
+      "vouches": {
+        "id": "vouches",
+        "label": "Vouches Feed",
+        "maxInstances": 2,
+        "fields": [
+          { "path": "vouches.title", "label": "Title", "defaultValue": "Trusted by the community" },
+          { "path": "vouches.subtitle", "type": "richtext", "label": "Subtitle", "defaultValue": "Real feedback from buyers in our Discord and on public forums." }
+        ],
+        "lists": [
+          { "path": "vouches.items", "label": "Vouches", "kind": "vouches", "description": "Testimonials from Discord / forum." }
+        ]
+      },
+      "header": {
+        "id": "header",
+        "label": "Header",
+        "maxInstances": 1
+      },
+      "gallery": {
+        "id": "gallery",
+        "label": "Gallery",
+        "maxInstances": 1
+      },
+      "buy-box": {
+        "id": "buy-box",
+        "label": "Buy Box",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "product.buyBox.variantLabel", "label": "Variant Label", "defaultValue": "License Type" },
+          { "path": "product.buyBox.addonsLabel", "label": "Add-ons Label", "defaultValue": "Add-ons" },
+          { "path": "product.buyBox.quantityLabel", "label": "Quantity Label", "defaultValue": "Quantity" },
+          { "path": "product.buyBox.primaryActionLabel", "label": "Primary CTA", "defaultValue": "Add to Cart" },
+          { "path": "product.buyBox.buyNowLabel", "label": "Buy Now CTA", "defaultValue": "Buy Now" },
+          { "path": "product.buyBox.reviewsLabel", "label": "Reviews Suffix", "defaultValue": "reviews" },
+          { "path": "product.buyBox.noReviewsLabel", "label": "No Reviews Label", "defaultValue": "0 reviews" }
+        ]
+      },
+      "details": {
+        "id": "details",
+        "label": "Details",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "product.details.descriptionTabLabel", "label": "Description Tab Label", "defaultValue": "Description" },
+          { "path": "product.details.reviewsTabLabel", "label": "Reviews Tab Label", "defaultValue": "Reviews" },
+          { "path": "product.details.shopReviewsTabLabel", "label": "Shop Reviews Tab Label", "defaultValue": "Shop Reviews" },
+          { "path": "product.details.faqTabLabel", "label": "FAQ Tab Label", "defaultValue": "FAQ" },
+          { "path": "product.details.emptyDescriptionLabel", "label": "Empty Description Label", "defaultValue": "No description available." },
+          { "path": "product.details.emptyReviewsTitle", "label": "Empty Reviews Title", "defaultValue": "No reviews yet" },
+          { "path": "product.details.emptyReviewsDescription", "type": "richtext", "label": "Empty Reviews Description", "defaultValue": "Be the first to share your experience with this product." },
+          { "path": "product.details.emptyFaqLabel", "label": "Empty FAQ Label", "defaultValue": "No frequently asked questions available." }
+        ]
+      },
+      "related-products": {
+        "id": "related-products",
+        "label": "Related Products",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "product.relatedProducts.title", "label": "Section Title", "defaultValue": "You might also like" }
+        ]
+      },
+      "footer": {
+        "id": "footer",
+        "label": "Footer",
+        "maxInstances": 1,
+        "fields": [
+          { "path": "footer.copyright", "label": "Copyright", "defaultValue": "© 2026 Store" }
+        ]
+      }
+    },
+    "linkGroups": [
+      {
+        "path": "navigation.header.links",
+        "label": "Header Links",
+        "description": "Links shown next to the main Products tab.",
+        "pageIds": ["navigation"]
+      },
+      {
+        "path": "navigation.footer.links",
+        "label": "Footer Links",
+        "description": "Links shown in the footer utility row.",
+        "pageIds": ["footer"]
+      }
+    ]
+  },
+  "createdAt": "2026-02-01",
+  "demoUrl": "https://default-demo.myshoppex.io",
+  "audience": "digital-reseller",
+  "tags": ["saas", "digital-tools", "neutral"],
+  "presets": [
+    {
+      "id": "digital-tools",
+      "name": "Digital Tools & SaaS",
+      "description": "Neutral starting point for digital products, SaaS licenses, or indie tools. Works for any niche.",
+      "overrides": {
+        "content": {
+          "licenseDelivery": {
+            "title": "How delivery works",
+            "subtitle": "Instant email + dashboard access after payment — no manual steps."
+          },
+          "vouches": {
+            "title": "Loved by thousands of buyers",
+            "subtitle": "Real reviews from customers across the community."
+          }
+        }
+      }
+    }
+  ]
+}
